@@ -27,6 +27,9 @@ public class Assignment {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne(mappedBy = "assignment", cascade = CascadeType.ALL)
+    private Grade grade;
+
     // Getters and Setters
 
     public String getClientName() {
@@ -67,6 +70,15 @@ public class Assignment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+        grade.setAssignment(this); // Ensures bidirectional consistency
     }
 
     public long getId() {

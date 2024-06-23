@@ -10,8 +10,9 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "assignment_id")
-    private long assignmentId;
+    @OneToOne
+    @JoinColumn(name = "assignment_id", referencedColumnName = "id")
+    private Assignment assignment;
 
     @Column(name = "feedback")
     private String feedback;
@@ -21,7 +22,6 @@ public class Grade {
 
     // Getters and Setters
 
-
     public long getId() {
         return id;
     }
@@ -30,12 +30,12 @@ public class Grade {
         this.id = id;
     }
 
-    public long getAssignmentId() {
-        return assignmentId;
+    public Assignment getAssignment() {
+        return assignment;
     }
 
-    public void setAssignmentId(long assignmentId) {
-        this.assignmentId = assignmentId;
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 
     public String getFeedback() {
