@@ -65,5 +65,5 @@ public class AssignmentController {
         assignmentService.deleteAssignment(id);
         return ResponseEntity.noContent().build();
     }
-    
+
 }
